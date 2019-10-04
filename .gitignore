@@ -1,0 +1,4 @@
+*.swp
+*.note
+build
+node_modules

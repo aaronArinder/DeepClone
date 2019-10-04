@@ -2,11 +2,14 @@
   "name": "deep-clone",
   "version": "1.0.0",
   "description": "A native add-on for Node that deeply clones JavaScript objects using C++.",
-  "main": "index.js",
+  "main": "benchmark.js",
   "scripts": {
+    "build": "node-gyp rebuild"
   },
   "author": "Aaron Arinder",
   "license": "ISC",
   "dependencies": {
-  }
+    "bindings": "^1.5.0"
+  },
+  "gypfile": true
 }
