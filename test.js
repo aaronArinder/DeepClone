@@ -33,5 +33,25 @@ clonedObj1.i = 4;
 assert.notDeepStrictEqual(clonedObj1, testObj1);
 console.log('PASSED: mutating deeply cloned objects don\'t mutate same object');
 
+/*
+ * The following tests demonstrate that certain failures of JSON.parse(JSON.stringify())
+ * aren't problems for this native addon. Specifically, anything that can't be stringified
+ * won't be cloned: functions, Symbols, undefined, and circular references. (I _think_ that's
+ * it).
+ * */
+
+// functions preserved
+const functionObj = {
+  helloWorld: () => 'hello, world',
+};
+
+const functionCloned = DeepClone(functionObj);
+
+// equality check
+assert.deepStrictEqual(functionCloned, functionObj);
+// make sure the function can still be invoked
+assert.strictEqual(functionCloned.helloWorld(), 'hello, world');
+console.log("PASSED: functions cloned");
+
 console.log('\n');
 
