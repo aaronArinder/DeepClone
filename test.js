@@ -40,18 +40,37 @@ console.log('PASSED: mutating deeply cloned objects don\'t mutate same object');
  * it).
  * */
 
-// functions preserved
+
+/* FUNCTIONS */
 const functionObj = {
   helloWorld: () => 'hello, world',
 };
 
 const functionCloned = DeepClone(functionObj);
 
-// equality check
 assert.deepStrictEqual(functionCloned, functionObj);
-// make sure the function can still be invoked
 assert.strictEqual(functionCloned.helloWorld(), 'hello, world');
 console.log("PASSED: functions cloned");
+
+
+/* UNDEFINED */
+const undefinedObj = {
+  undefined: undefined,
+};
+
+const undefinedCloned = DeepClone(undefinedObj);
+assert.deepStrictEqual(undefinedCloned, undefinedObj);
+console.log("PASSED: undefined cloned");
+
+
+/* NULL */
+const nullObj = {
+  null: null,
+};
+
+const nullCloned = DeepClone(nullObj);
+assert.deepStrictEqual(nullCloned, nullObj);
+console.log("PASSED: null cloned");
 
 console.log('\n');
 
