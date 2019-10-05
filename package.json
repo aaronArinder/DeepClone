@@ -4,7 +4,8 @@
   "description": "A native add-on for Node that deeply clones JavaScript objects using C++.",
   "main": "benchmark.js",
   "scripts": {
-    "build": "node-gyp rebuild"
+    "build": "node-gyp rebuild",
+    "test": "npm run build && node test"
   },
   "author": "Aaron Arinder",
   "license": "ISC",
