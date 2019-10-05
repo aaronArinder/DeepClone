@@ -50,7 +50,7 @@ const functionCloned = DeepClone(functionObj);
 
 assert.deepStrictEqual(functionCloned, functionObj);
 assert.strictEqual(functionCloned.helloWorld(), 'hello, world');
-console.log("PASSED: functions cloned");
+console.log('PASSED: functions cloned');
 
 
 /* UNDEFINED */
@@ -60,7 +60,7 @@ const undefinedObj = {
 
 const undefinedCloned = DeepClone(undefinedObj);
 assert.deepStrictEqual(undefinedCloned, undefinedObj);
-console.log("PASSED: undefined cloned");
+console.log('PASSED: undefined cloned');
 
 
 /* NULL */
@@ -70,7 +70,7 @@ const nullObj = {
 
 const nullCloned = DeepClone(nullObj);
 assert.deepStrictEqual(nullCloned, nullObj);
-console.log("PASSED: null cloned");
+console.log('PASSED: null cloned');
 
 
 /* SYMBOL */
@@ -81,7 +81,7 @@ symbolObj[symbolKey] = symbolVal;
 
 const symbolCloned = DeepClone(symbolObj);
 assert.deepStrictEqual(symbolCloned, symbolObj);
-console.log("PASSED: Symbol cloned");
+console.log('PASSED: Symbol cloned');
 
 
 /* ARRAYS */
@@ -89,7 +89,7 @@ const array = [ 1, 2, 3, 4, 5 ];
 const arrayCloned = DeepClone(array);
 
 assert.deepStrictEqual(arrayCloned, array);
-console.log("PASSED: array cloned");
+console.log('PASSED: array cloned');
 
 
 /* ERRORS */
@@ -97,14 +97,32 @@ console.log("PASSED: array cloned");
 try {
   const string = 'Here be a humble string of mighty repose and healthy repast';
   DeepClone(string);
-  console.log("FAILING: String cloned");
+  console.log('FAILING: String cloned');
 } catch (err) {
   const expectedError = 'TypeError: Strings cannot be cloned.';
   // make sure errs are throwing properly verbose messages
   const includesExpectedError = err.stack.includes(expectedError);
 
   assert(includesExpectedError, 'Thrown error not verbose enough.');
-  console.log("PASSING: error thrown when attempting to clone a string");
+  console.log('PASSING: error thrown when attempting to clone a string');
+  // by being in the catch, we've demonstrated that the err threw; so, successful test
+  console.log('  thrown err (expected)', err.stack.split(/\n/)[0]);
+}
+
+
+/* MULTIPLE ARGS */
+
+try {
+  DeepClone({a: 1}, {b: 2});
+  console.log('FAILING: Multiple arguments passed without error');
+
+} catch (err) {
+  const expectedError = 'TypeError: Too many arguments.';
+  // make sure errs are throwing properly verbose messages
+  const includesExpectedError = err.stack.includes(expectedError);
+
+  assert(includesExpectedError, 'Thrown error not verbose enough.');
+  console.log('PASSING: error thrown when attempting to clone a string');
   // by being in the catch, we've demonstrated that the err threw; so, successful test
   console.log('  thrown err (expected)', err.stack.split(/\n/)[0]);
 }
