@@ -83,5 +83,14 @@ const symbolCloned = DeepClone(symbolObj);
 assert.deepStrictEqual(symbolCloned, symbolObj);
 console.log("PASSED: Symbol cloned");
 
+
+/* ARRAYS */
+const array = [ 1, 2, 3, 4, 5 ];
+const arrayCloned = DeepClone(array);
+
+assert.deepStrictEqual(arrayCloned, array);
+console.log("PASSED: array cloned");
+
+
 console.log('\n');
 
