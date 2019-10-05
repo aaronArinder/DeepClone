@@ -72,5 +72,16 @@ const nullCloned = DeepClone(nullObj);
 assert.deepStrictEqual(nullCloned, nullObj);
 console.log("PASSED: null cloned");
 
+
+/* SYMBOL */
+const symbolKey = Symbol('key');
+const symbolVal = Symbol('val');
+const symbolObj = {};
+symbolObj[symbolKey] = symbolVal;
+
+const symbolCloned = DeepClone(symbolObj);
+assert.deepStrictEqual(symbolCloned, symbolObj);
+console.log("PASSED: Symbol cloned");
+
 console.log('\n');
 
