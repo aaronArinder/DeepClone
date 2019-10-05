@@ -92,5 +92,23 @@ assert.deepStrictEqual(arrayCloned, array);
 console.log("PASSED: array cloned");
 
 
+/* ERRORS */
+/* STRINGS */
+try {
+  const string = 'Here be a humble string of mighty repose and healthy repast';
+  DeepClone(string);
+  console.log("FAILING: String cloned");
+} catch (err) {
+  const expectedError = 'TypeError: Strings cannot be cloned.';
+  // make sure errs are throwing properly verbose messages
+  const includesExpectedError = err.stack.includes(expectedError);
+
+  assert(includesExpectedError, 'Thrown error not verbose enough.');
+  console.log("PASSING: error thrown when attempting to clone a string");
+  // by being in the catch, we've demonstrated that the err threw; so, successful test
+  console.log('  thrown err (expected)', err.stack.split(/\n/)[0]);
+}
+
+
 console.log('\n');
 
