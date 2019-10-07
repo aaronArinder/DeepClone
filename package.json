@@ -5,6 +5,7 @@
   "main": "benchmark.js",
   "scripts": {
     "build": "node-gyp rebuild",
+    "performance": "npm run build && node performance",
     "test": "npm run build && node test"
   },
   "author": "Aaron Arinder",
@@ -12,5 +13,9 @@
   "dependencies": {
     "bindings": "^1.5.0"
   },
-  "gypfile": true
+  "gypfile": true,
+  "devDependencies": {
+    "benchmark": "^2.1.4",
+    "lodash": "^4.17.15"
+  }
 }
